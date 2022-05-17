@@ -1,2 +1,2 @@
 # application-config
-Formation DSID sur les microservices par Jasmine. Kamel
+Formation DSID sur les microservices 
