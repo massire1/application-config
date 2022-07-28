@@ -15,7 +15,7 @@ spring:
             FAIL_ON_EMPTY_BEANS: false
     jpa:
         hibernate:
-            ddl-auto: nnone
+            ddl-auto: none
             naming:
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         properties:
