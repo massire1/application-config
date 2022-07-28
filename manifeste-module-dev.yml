@@ -1,0 +1,59 @@
+server:
+    servlet:
+        context-path: /manifeste-module
+    error:
+        include-message: always
+    port: 8083
+spring:
+    datasource:
+        driver-class-name: com.ibm.db2.jcc.DB2Driver
+        password: Bedis@Dsid001
+        url: jdbc:db2://10.2.3.63:50000/DB2WLOC
+        username: BEDIS001
+    jackson:
+        serialization:
+            FAIL_ON_EMPTY_BEANS: false
+    jpa:
+        hibernate:
+            ddl-auto: validate
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            hibernate:
+                default_schema: G2010R
+        show-sql: true
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: http://10.2.3.59:8090/auth/realms/gainde
+    zipkin:
+        baseUrl: '#<url du zipkin>'
+        enabled: false
+        service:
+            name: manifeste-module
+    sleuth:
+        sampler:
+            probability: '1'
+        jdbc:
+            datasource-proxy:
+                slow-query:
+                    enable-logging: true
+                    log-level: WARN
+                    logger-name: 'slow-query'
+                    threshold: 10
+spring-security-uri: http://10.2.3.59:8090/auth/realms/gainde/protocol/openid-connect/token
+
+logging:
+    file:
+        name: ${catalina.base:.}/logs/manifeste-module.log
+    logback:
+        rollingpolicy:
+            clean-history-on-start: false
+            file-name-pattern: '${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz'
+            max-history: 100
+            max-file-size: 10MB
+    level:
+        root: "info"
+        org.springframework.web: "error"
+        org.hibernate: "error"
