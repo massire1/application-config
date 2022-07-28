@@ -14,7 +14,7 @@ spring:
         username: BEDIS001
     jpa:
         hibernate:
-            ddl-auto: validate
+            ddl-auto: none
             naming:
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         open-in-view: false
@@ -26,7 +26,7 @@ spring:
         oauth2:
             resourceserver:
                 jwt:
-                    issuer-uri: http://10.2.3.59:8090/auth/realms/gainde
+                    issuer-uri: http://13.38.124.17:8090/auth/realms/gainde
     zipkin:
         baseUrl: '#<url du zipkin>'
         enabled: false
@@ -46,7 +46,7 @@ spring:
                     log-level: WARN
                     logger-name: 'slow-query'
                     threshold: 10
-spring-security-uri: http://10.2.3.59:8090/auth/realms/gainde/protocol/openid-connect/token
+spring-security-uri: http://13.38.124.17:8090/auth/realms/gainde/protocol/openid-connect/token
 
 log4j:
     appender:
